@@ -1,0 +1,26 @@
+The solution involves removing the `!important` declaration and adjusting the CSS selectors to achieve the desired styling using standard CSS specificity rules:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.grandchild {
+  color: green;
+}
+
+.parent .child .grandchild {
+  color: purple;
+}
+
+/* Or, for a cleaner solution focusing on the grandchild only*/
+.parent .child .grandchild {
+  color: purple;
+}
+```
+
+By removing the `!important` flag, the CSS cascade works predictably. The `.parent .child .grandchild` selector's specificity is sufficient to override the styles from `.parent` and `.child`, resulting in the desired purple color without resorting to `!important`. This approach makes the CSS easier to maintain and debug in the long run.
