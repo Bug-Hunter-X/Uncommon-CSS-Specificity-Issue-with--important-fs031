@@ -1,0 +1,27 @@
+The following CSS code snippet demonstrates an uncommon issue related to specificity and inheritance:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red !important;
+}
+
+.grandchild {
+  color: green;
+}
+
+.parent .child .grandchild {
+  color: purple;
+}
+
+<div class="parent">
+  <div class="child">
+    <div class="grandchild"></div>
+  </div>
+</div>
+```
+
+The `!important` declaration in `.child` overrides the `color: blue` from `.parent`, resulting in red text for `.child`. However, the `color: purple` declaration in `.parent .child .grandchild` is more specific than `.child`, so it overrides the `!important` declaration and sets the color of `.grandchild` to purple. This behavior is unexpected, and it can be hard to debug because it involves an intricate interplay of CSS specificity rules. It also highlights that `!important` should be used sparingly and only when absolutely necessary, because it can make CSS very hard to maintain and understand.
